@@ -1,7 +1,6 @@
 package io.retrorock.theory.helpers;
 
-import io.colorapp.theory.annotations.*;
-import io.colorapp.theory.components.*;
+import io.retrorock.theory.components.*;
 import io.retrorock.theory.annotations.BelongsTo;
 import io.retrorock.theory.annotations.Column;
 import io.retrorock.theory.annotations.PrimaryKey;
