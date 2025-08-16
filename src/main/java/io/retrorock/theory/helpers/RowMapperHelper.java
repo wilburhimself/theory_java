@@ -16,8 +16,9 @@ public class RowMapperHelper {
     public Boolean fieldExists(String fieldName) throws SQLException {
         Boolean result = false;
         for (int i = 1; i <= this.metaData.getColumnCount(); i ++) {
-            if (metaData.getColumnLabel(i).equals(fieldName)) {
-                Object fieldObject = resultSet.getObject(fieldName);
+            String label = metaData.getColumnLabel(i);
+            if (label != null && label.equalsIgnoreCase(fieldName)) {
+                Object fieldObject = resultSet.getObject(label);
                 if (fieldObject != null) {
                     result = true;
                 }

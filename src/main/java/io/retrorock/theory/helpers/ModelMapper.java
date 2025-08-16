@@ -235,7 +235,7 @@ public class ModelMapper {
 
     public ModelMapper fields(Class entity) {
         Map<String, String> tableInfo = getTableinfo(entity);
-        this.fields(entity, tableInfo.get(tableAlias));
+        this.fields(entity, tableInfo.get("tableAlias"));
         return this;
     }
 
