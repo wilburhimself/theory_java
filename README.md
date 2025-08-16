@@ -1,7 +1,7 @@
 # Theory (Java)
 
 [![CI](https://github.com/wilburhimself/theory_java/actions/workflows/ci.yml/badge.svg)](https://github.com/wilburhimself/theory_java/actions/workflows/ci.yml)
-[![Maven Central](https://img.shields.io/maven-central/v/io.retrorock/theory.svg)](https://central.sonatype.com/artifact/io.retrorock/theory)
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.wilburhimself/theory.svg)](https://central.sonatype.com/artifact/io.github.wilburhimself/theory)
 
 A small, annotation-driven data access library built on Spring JDBC. It provides:
 
@@ -40,7 +40,7 @@ Then, in a separate project, add the dependency (adjust version if needed):
 
 ```xml
 <dependency>
-  <groupId>io.retrorock</groupId>
+  <groupId>io.github.wilburhimself</groupId>
   <artifactId>theory</artifactId>
   <version>1.0-SNAPSHOT</version>
 </dependency>
@@ -53,8 +53,8 @@ Then, in a separate project, add the dependency (adjust version if needed):
 Annotate your entity with table/column mapping. Extend `Model` to get helpers like `serialize()` and JDBC `RowMapper` behavior.
 
 ```java
-import io.retrorock.theory.annotations.*;
-import io.retrorock.theory.base.Model;
+import io.github.wilburhimself.theory.annotations.*;
+import io.github.wilburhimself.theory.base.Model;
 
 @Table(name = "users", alias = "u")
 public class User extends Model {
@@ -79,7 +79,7 @@ Relationships can be declared with `@BelongsTo` on a field referencing another `
 Extend `Repository<T>` and wire a `JdbcTemplate` (via Spring or manually through `JdbcDaoSupport`).
 
 ```java
-import io.retrorock.theory.base.Repository;
+import io.github.wilburhimself.theory.base.Repository;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 
@@ -120,7 +120,7 @@ User u = repo.find(1);
 List<User> users = repo.list();
 
 // Custom select with Query
-var q = new io.retrorock.theory.operations.Query();
+var q = new io.github.wilburhimself.theory.operations.Query();
 q.db.from(User.class)
     .fields(User.class)
     .where("u.email = '%s'", "alice@example.com")
@@ -140,11 +140,11 @@ user.setEmail("bob@example.com");
 user.setName("Bob");
 
 // Insert and return generated key
-Integer id = repo.persist(user, new io.retrorock.theory.operations.Insert());
+Integer id = repo.persist(user, new io.github.wilburhimself.theory.operations.Insert());
 user.identify(id);
 
 // Update example
-var update = new io.retrorock.theory.operations.Update();
+var update = new io.github.wilburhimself.theory.operations.Update();
 repo.persist(user, update);
 
 // Raw SQL
@@ -153,16 +153,16 @@ repo.persist("DELETE FROM users WHERE id = 123");
 
 ## Minimal Runnable Example
 
-This repo includes a minimal example using H2 in-memory DB under `src/test/java/io/retrorock/theory/example/`:
+This repo includes a minimal example using H2 in-memory DB under `src/test/java/io/github/wilburhimself/theory/example/`:
 
-- `User` model: `src/test/java/io/retrorock/theory/example/User.java`
-- `UserRepository`: `src/test/java/io/retrorock/theory/example/UserRepository.java`
-- Test: `src/test/java/io/retrorock/theory/example/UserRepositoryTest.java`
+- `User` model: `src/test/java/io/github/wilburhimself/theory/example/User.java`
+- `UserRepository`: `src/test/java/io/github/wilburhimself/theory/example/UserRepository.java`
+- Test: `src/test/java/io/github/wilburhimself/theory/example/UserRepositoryTest.java`
 
 Run just the example test:
 
 ```bash
-mvn -Dtest=io.retrorock.theory.example.UserRepositoryTest test
+mvn -Dtest=io.github.wilburhimself.theory.example.UserRepositoryTest test
 ```
 
 ## Spring Configuration
