@@ -1,9 +1,7 @@
 # Theory (Java)
 
-[![CI](https://github.com/OWNER/REPO/actions/workflows/ci.yml/badge.svg)](https://github.com/OWNER/REPO/actions/workflows/ci.yml)
+[![CI](https://github.com/wilburhimself/theory_java/actions/workflows/ci.yml/badge.svg)](https://github.com/wilburhimself/theory_java/actions/workflows/ci.yml)
 [![Maven Central](https://img.shields.io/maven-central/v/io.retrorock/theory.svg)](https://central.sonatype.com/artifact/io.retrorock/theory)
-
-Note: Replace `OWNER/REPO` with your GitHub org/repo, and adjust Maven Central coordinates when published.
 
 A small, annotation-driven data access library built on Spring JDBC. It provides:
 
