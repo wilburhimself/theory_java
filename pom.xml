@@ -104,5 +104,20 @@
             <artifactId>google-collections</artifactId>
             <version>1.0</version>
         </dependency>
+
+        <!-- REQUIRED: Spring JDBC for JdbcDaoSupport/JdbcTemplate -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>4.2.1.RELEASE</version>
+        </dependency>
+
+        <!-- TEST: In-memory database for runnable examples/tests -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>1.4.200</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 </project>
