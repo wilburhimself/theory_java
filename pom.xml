@@ -32,7 +32,7 @@
         <url>https://github.com/wilburhimself/theory_java</url>
         <connection>scm:git:https://github.com/wilburhimself/theory_java.git</connection>
         <developerConnection>scm:git:ssh://git@github.com/wilburhimself/theory_java.git</developerConnection>
-        <tag>HEAD</tag>
+        <tag>v0.1.0</tag>
     </scm>
 
     <properties>
@@ -41,18 +41,6 @@
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
 
-    <pluginRepositories>
-        <pluginRepository>
-            <id>flex-mojos-plugin-repository</id>
-            <url>http://repository.sonatype.org/content/groups/flexgroup</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </pluginRepository>
-    </pluginRepositories>
 
     <dependencyManagement>
         <dependencies>
