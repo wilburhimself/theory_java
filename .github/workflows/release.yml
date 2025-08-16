@@ -14,29 +14,18 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up Temurin JDK 8
+      - name: Set up Temurin JDK 8 (with Maven server and GPG)
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: '8'
-
-      - name: Import GPG key
-        uses: crazy-max/ghaction-import-gpg@v6
-        with:
-          gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
-          passphrase: ${{ secrets.GPG_PASSPHRASE }}
-
-      - name: Configure Maven settings.xml
-        uses: s4u/maven-settings-action@v3
-        with:
-          servers: |
-            [
-              {
-                "id": "central",
-                "username": "${{ secrets.CENTRAL_USERNAME }}",
-                "password": "${{ secrets.CENTRAL_PASSWORD }}"
-              }
-            ]
+          # Configure server credentials for Maven Central Publishing
+          server-id: 'central'
+          server-username: ${{ secrets.CENTRAL_USERNAME }}
+          server-password: ${{ secrets.CENTRAL_PASSWORD }}
+          # Import GPG key for signing
+          gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
+          gpg-passphrase: ${{ secrets.GPG_PASSPHRASE }}
 
       - name: Build and publish (Central Publishing)
         run: mvn -P release -DskipTests -B -V clean deploy
