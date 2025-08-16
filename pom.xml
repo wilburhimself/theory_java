@@ -6,7 +6,40 @@
 
     <groupId>io.github.wilburhimself</groupId>
     <artifactId>theory</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>0.1.0</version>
+
+    <name>Theory (Java)</name>
+    <description>Pragmatic, annotation-driven data access library built on Spring JDBC.</description>
+    <url>https://github.com/wilburhimself/theory_java</url>
+
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>https://opensource.org/licenses/MIT</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>wilburhimself</id>
+            <name>Wilbur Suero</name>
+            <url>https://github.com/wilburhimself</url>
+        </developer>
+    </developers>
+
+    <scm>
+        <url>https://github.com/wilburhimself/theory_java</url>
+        <connection>scm:git:https://github.com/wilburhimself/theory_java.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/wilburhimself/theory_java.git</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
 
     <pluginRepositories>
         <pluginRepository>
@@ -31,6 +64,80 @@
                 <scope>import</scope>
             </dependency>
         </dependencies>
+
+    <build>
+        <plugins>
+            <!-- Attach sources.jar -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.3.0</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Attach javadoc.jar -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.6.3</version>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                        <configuration>
+                            <source>8</source>
+                            <failOnError>false</failOnError>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Sonatype Central Publishing (new portal) -->
+            <plugin>
+                <groupId>org.sonatype.central</groupId>
+                <artifactId>central-publishing-maven-plugin</artifactId>
+                <version>0.5.0</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <publishingServerId>central</publishingServerId>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>release</id>
+            <build>
+                <plugins>
+                    <!-- Sign artifacts in verify phase -->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>3.2.4</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
     </dependencyManagement>
 
     <dependencies>
