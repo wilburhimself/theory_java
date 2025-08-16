@@ -108,14 +108,14 @@ public class ModelMapper {
 
     public ModelMapper pk(Integer id) {
         ArrayList<String> fields = new ArrayList<String>();
-        fields.add(tableAlias+"."+primaryKey+" =  " + id);
+        fields.add(tableAlias+"."+primaryKeyName+" =  " + id);
         this.where(fields);
         return this;
     }
 
     public ModelMapper pk(String id) {
         ArrayList<String> fields = new ArrayList<String>();
-        fields.add(tableAlias+"."+primaryKey+" =  '" + id + "'");
+        fields.add(tableAlias+"."+primaryKeyName+" =  '" + id + "'");
         this.where(fields);
         return this;
     }
