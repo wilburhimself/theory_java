@@ -64,7 +64,7 @@
                 <scope>import</scope>
             </dependency>
         </dependencies>
-
+    </dependencyManagement>
     <build>
         <plugins>
             <!-- Attach sources.jar -->
@@ -138,7 +138,6 @@
             </build>
         </profile>
     </profiles>
-    </dependencyManagement>
 
     <dependencies>
 
